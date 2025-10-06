@@ -19,7 +19,7 @@ const SellerPreview = ({ seller, addClass, visible }: SellerPreviewProps) => {
           <h3 className="text-xl">{seller.name}</h3>
           {visible && (
             <Link
-              className="text-sm flex items-center gap-x-1 text-primary/85"
+              className="text-sm flex items-center gap-x-1 text-primary/85 hover:text-primary duration-150"
               href={`profile/${seller.name
                 .toLocaleLowerCase()
                 .split(" ")

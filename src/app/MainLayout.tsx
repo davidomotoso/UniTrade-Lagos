@@ -1,16 +1,15 @@
 "use client";
-
 import Navbar from "@/components/Navbar";
 import Alert from "@/components/Alert";
-import useCart from "@/Utils/useCart";
+import { useCartStore } from "@/Utils/storeCart";
 
 export const MainLayout = ({ children }: { children: React.ReactNode }) => {
-  const { alert } = useCart();
+  const alert = useCartStore((state) => state.alert as { type?: boolean });
   return (
     <>
       <Navbar />
       {children}
-      {alert && <Alert />}
+      {alert.type && <Alert />}
     </>
   );
 };

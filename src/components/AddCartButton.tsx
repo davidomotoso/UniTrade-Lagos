@@ -1,20 +1,24 @@
 "use client";
 import { FaCartPlus } from "react-icons/fa6";
-import useCart from "@/Utils/useCart";
-import { StaticImageData } from "next/image";
+import { useCartStore } from "@/Utils/storeCart";
+import useFunctions from "@/Utils/useFunctions";
 
 interface AddCartButtonProps {
-  product: { image: StaticImageData; name: string; price: string };
+  product: {};
   icon: boolean;
   addClass: string;
 }
 
 const AddCartButton = ({ product, icon,addClass }: AddCartButtonProps) => {
-  const { pushToCart } = useCart();
+  const addToCart = useCartStore((state) => state.addToCart);
+  const {alertMessage}=useFunctions();
   return (
     <button
       type="submit"
-      onClick={() => pushToCart(product)}
+      onClick={() => {
+        addToCart(product);
+        alertMessage("Item added to cart","bg-accent");
+      }}
       className={`bg-primary text-white ${addClass} rounded-md cursor-pointer flex items-center w-full mt-4 font-medium hover:bg-primary/90 duration-200`}
     >
       {icon && <FaCartPlus className="text-xl" />}

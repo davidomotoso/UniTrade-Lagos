@@ -1,5 +1,6 @@
 import { BsBagCheckFill } from "react-icons/bs";
 import { FaCheck, FaCheckDouble, FaX } from "react-icons/fa6";
+import { useCartStore } from "./storeCart";
 
 const useFunctions = () => {
   const getDeliveryDate = (daysToAdd: number): string => {
@@ -40,6 +41,27 @@ const useFunctions = () => {
     }
   };
 
-  return { getDeliveryDate, getAppraisal };
+  const alertMessage = (message: string, color: string) => {
+    const setAlert = useCartStore.getState().setAlert;
+    setAlert({ message, type: true, color });
+    setTimeout(() => {
+      setAlert({ message: "", type: false, color: "" });
+    }, 2000);
+  };
+
+  const calTotalPrice = () => {
+    const cart = useCartStore.getState().cart as { price: string }[];
+    let total = 0;
+    cart.forEach((item) => {
+      const price = parseFloat(item.price.replace(/[^0-9.-]+/g, ""));
+      total += price;
+    });
+    return total.toLocaleString("en-NG", {
+      style: "currency",
+      currency: "NGN",
+    }).replace(/\.00$/, "");;
+  };
+
+  return { getDeliveryDate, getAppraisal, alertMessage, calTotalPrice };
 };
 export default useFunctions;
