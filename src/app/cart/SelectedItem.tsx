@@ -1,6 +1,6 @@
+import Counter from "@/components/Counter";
 import { useCartStore } from "@/Utils/storeCart";
 import Image, { StaticImageData } from "next/image";
-import { FaMinus, FaPlus } from "react-icons/fa6";
 import { FiTrash } from "react-icons/fi";
 
 const SelectedItem = () => {
@@ -8,6 +8,7 @@ const SelectedItem = () => {
     image: StaticImageData;
     price: string;
     name: string;
+    quantity: number;
   }[];
   return (
     <section className="bg-white rounded-sm w-8/11 mb-4">
@@ -39,24 +40,7 @@ const SelectedItem = () => {
               <FiTrash className="text-lg" />
               <span className="text-sm">Remove</span>
             </button>
-            <form method="post" className="flex items-center gap-x-3">
-              <button
-                title="minus"
-                className="font-bold text-lg rounded-md p-2 text-white bg-primary/85 cursor-pointer hover:bg-primary disabled:bg-gray-500"
-                type="submit"
-                disabled
-              >
-                <FaMinus />
-              </button>
-              <strong>1</strong>
-              <button
-                title="plus"
-                className="font-bold text-lg rounded-md p-2 text-white bg-primary/85 cursor-pointer hover:bg-primary"
-                type="submit"
-              >
-                <FaPlus />
-              </button>
-            </form>
+            <Counter item={{ quantity: item.quantity }} />
           </div>
         </div>
       ))}

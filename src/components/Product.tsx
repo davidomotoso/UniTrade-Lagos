@@ -1,9 +1,9 @@
-import { introProducts} from "@/components/Exports";
+import { introProducts } from "@/components/Exports";
 import Image from "next/image";
 import { FaStar } from "react-icons/fa6";
 import ProductDetails from "@/components/ProductDetails";
 import Specifications from "./Specifications";
-import AddCartButton from "./AddCartButton";
+import CartButtons from "./CartButtons";
 
 const Product = async ({ param }: { param: { id: number } }) => {
   const { id } = await param;
@@ -44,7 +44,7 @@ const Product = async ({ param }: { param: { id: number } }) => {
               </div>
               <p className="text-primary">(32 verified rating)</p>
             </div>
-            <AddCartButton product={{ name: product.name, price: product.price,image:product.image }} icon={true} addClass={"p-3"} />
+            <CartButtons product={{ name: product.name, image: product.image, id: product.id, price: product.price }} />
           </div>
           <p className="text-xs text-primary cursor-pointer hover:underline">
             Report incorrect product information
