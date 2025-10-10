@@ -45,7 +45,7 @@ const DeliveryReturns = ({ params }: { params: { id: number } }) => {
               <p className="text-gray-600 text-xs">
                 Ready for pickup between <strong>{getDeliveryDate(3)}</strong>{" "}
                 and
-                <strong> {getDeliveryDate(5)}</strong>. Free within
+                <strong> {getDeliveryDate(6)}</strong>. Free within
                 <strong> UNILAG & CMUL</strong>
               </p>
             </div>

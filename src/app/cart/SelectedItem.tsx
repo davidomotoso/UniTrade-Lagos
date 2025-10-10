@@ -9,6 +9,7 @@ const SelectedItem = () => {
     price: string;
     name: string;
     quantity: number;
+    id:number
   }[];
   return (
     <section className="bg-white rounded-sm w-8/11 mb-4">
@@ -40,7 +41,7 @@ const SelectedItem = () => {
               <FiTrash className="text-lg" />
               <span className="text-sm">Remove</span>
             </button>
-            <Counter item={{ quantity: item.quantity }} />
+            <Counter item={{ id:item.id, quantity: item.quantity }} />
           </div>
         </div>
       ))}

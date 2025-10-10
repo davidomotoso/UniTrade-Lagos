@@ -9,16 +9,20 @@ interface Product {
   name: string;
   price: string;
   image: StaticImageData;
+  quantity: number;
 }
 
 const CartButtons = ({ product }: { product: Product }) => {
-  const cart = useCartStore((state) => state.cart) as { id: number }[];
-  const count = useCartStore((state) => state.count);
-  const isInCart = cart.some((item) => item.id === product.id);
+  const cart = useCartStore((state) => state.cart) as {
+    id: number;
+    quantity: number;
+  }[];
+  const getQuantity = cart.find((item) => item.id === product.id)?.quantity ?? 0;
+  const isInCart = getQuantity > 0;
   return (
     <>
       {isInCart ? (
-        <Counter item={{ quantity: count }} />
+        <Counter item={{ id: product.id, quantity: getQuantity }} />
       ) : (
         <AddCartButton
           product={{
@@ -26,7 +30,7 @@ const CartButtons = ({ product }: { product: Product }) => {
             price: product.price,
             image: product.image,
             id: product.id,
-            quantity: count,
+            quantity: product.quantity,
           }}
           icon={true}
           addClass={"p-3"}

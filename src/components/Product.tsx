@@ -44,7 +44,7 @@ const Product = async ({ param }: { param: { id: number } }) => {
               </div>
               <p className="text-primary">(32 verified rating)</p>
             </div>
-            <CartButtons product={{ name: product.name, image: product.image, id: product.id, price: product.price }} />
+            <CartButtons product={{ name: product.name, image: product.image, id: product.id, price: product.price,quantity:1 }} />
           </div>
           <p className="text-xs text-primary cursor-pointer hover:underline">
             Report incorrect product information

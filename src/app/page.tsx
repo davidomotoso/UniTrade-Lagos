@@ -2,10 +2,12 @@ import Image from "next/image";
 import banner from "../../public/banner.png";
 import Catergories from "./Catergories";
 import Hero from "./Hero";
+import Navbar from "@/components/Navbar";
 
 const Home = () => {
   return (
     <>
+      <Navbar />
       <section className="flex gap-6 h-[33rem]">
         <Catergories />
         <Image

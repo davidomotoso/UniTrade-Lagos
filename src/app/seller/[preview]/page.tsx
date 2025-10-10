@@ -2,10 +2,13 @@ import Preference from "@/components/Preference";
 import SellerProducts from "./SellerProducts";
 import { sellers } from "@/components/Exports";
 import SellerPreview from "@/components/SellerPreview";
+import Navbar from "@/components/Navbar";
 
 const page = async ({ params }: { params: { preview: string } }) => {
   const { preview } = await params;
   return (
+    <>
+      <Navbar />
     <section className="text-neutral-dark">
         {sellers
           .filter(
@@ -22,6 +25,7 @@ const page = async ({ params }: { params: { preview: string } }) => {
             </div>
           ))}
     </section>
+    </>
   );
 };
 

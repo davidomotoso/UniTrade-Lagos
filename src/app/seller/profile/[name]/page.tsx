@@ -5,11 +5,14 @@ import useFunctions from "@/Utils/useFunctions";
 import Link from "next/link";
 import comingSoon from "@/../public/coming-soon.svg";
 import Image from "next/image";
+import Navbar from "@/components/Navbar";
 
 const page = async ({ params }: { params: { name: string } }) => {
   const { name } = await params;
   const { getAppraisal } = useFunctions();
   return (
+    <>
+      <Navbar />
     <section className="bg-white rounded-sm text-neutral-dark pb-4">
       {sellers
         .filter(
@@ -148,6 +151,7 @@ const page = async ({ params }: { params: { name: string } }) => {
           </section>
         ))}
     </section>
+    </>
   );
 };
 

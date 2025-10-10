@@ -50,17 +50,20 @@ const useFunctions = () => {
   };
 
   const calTotalPrice = () => {
-    const cart = useCartStore.getState().cart as { price: string }[];
+    const cart = useCartStore.getState().cart as { price: string,quantity:number }[];
     let total = 0;
     cart.forEach((item) => {
-      const price = parseFloat(item.price.replace(/[^0-9.-]+/g, ""));
+      const price = parseFloat(item.price.replace(/[^0-9.-]+/g, "")) *item.quantity;
       total += price;
     });
-    return total.toLocaleString("en-NG", {
-      style: "currency",
-      currency: "NGN",
-    }).replace(/\.00$/, "");;
+    return total
+      .toLocaleString("en-NG", {
+        style: "currency",
+        currency: "NGN",
+      })
+      .replace(/\.00$/, "");
   };
+
 
   return { getDeliveryDate, getAppraisal, alertMessage, calTotalPrice };
 };

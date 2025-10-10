@@ -1,8 +1,11 @@
 import { introProducts } from "@/components/Exports";
 import Link from "next/link";
 import Image from "next/image";
+import Navbar from "@/components/Navbar";
 const TopSellers = () => {
   return (
+    <>
+      <Navbar />
     <section className="grid grid-cols-6 bg-white gap-4 p-5 pb-3 shadow-md rounded-b-md">
       {introProducts.map((product) => (
         <Link
@@ -45,6 +48,7 @@ const TopSellers = () => {
         </Link>
       ))}
     </section>
+    </>
   );
 };
 

@@ -28,7 +28,7 @@ const Preference = ({ seller }: { seller: { id: number } }) => {
           {uniqueBrands.map((brand, index) => (
             <li key={index} className="px-3 flex items-center gap-x-2 group cursor-pointer">
               <input
-                className="group-hover:before:bg-[var(--color-primary)]/30 before:duration-200 before:-left-2 before:-top-2 before:rounded-full before:absolute before:w-7 before:h-7 relative accent-[var(--color-primary)]"
+                className="group-hover:before:bg-primary/30 before:duration-200 before:-left-2 before:-top-2 before:rounded-full before:absolute before:w-7 before:h-7 relative accent-primary"
                 title="brand"
                 type="radio"
                 name="brand"
@@ -47,23 +47,23 @@ const Preference = ({ seller }: { seller: { id: number } }) => {
           <button
             title="apply"
             type="submit"
-            className="px-3 py-2 cursor-pointer hover:bg-[var(--color-primary)]/30 text-[var(--color-primary)] text-sm font-medium rounded-sm"
+            className="px-3 py-2 cursor-pointer hover:bg-primary/30 text-primary text-sm font-medium rounded-sm"
           >
             Apply
           </button>
         </div>
         <div className="relative">
           <div className="relative w-full h-[5px] bg-gray-300 rounded-full">
-            <div className="absolute h-full bg-[var(--color-primary)] rounded-full left-1/10 w-7/10" />
-            <div className="absolute -top-[6px] w-4 h-4 bg-[var(--color-primary)] rounded-full left-1/10 -translate-x-1/2" />
-            <div className="absolute -top-[6px] w-4 h-4 bg-[var(--color-primary)] rounded-full left-8/10 -translate-x-1/2" />
+            <div className="absolute h-full bg-primary rounded-full left-1/10 w-7/10" />
+            <div className="absolute -top-[6px] w-4 h-4 bg-primary rounded-full left-1/10 -translate-x-1/2" />
+            <div className="absolute -top-[6px] w-4 h-4 bg-primary rounded-full left-8/10 -translate-x-1/2" />
           </div>
         </div>
         <div className="flex items-center gap-4 text-sm text-gray-600">
           <input
             type="number"
             value={2000}
-            className="w-full px-2 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[var(--color-primary)] focus:border-transparent text-sm"
+            className="w-full px-2 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-primary focus:border-transparent text-sm"
             placeholder="Min"
             min="0"
             aria-label="Minimum price input"
@@ -73,7 +73,7 @@ const Preference = ({ seller }: { seller: { id: number } }) => {
           <input
             type="number"
             value={7000}
-            className="w-full px-2 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[var(--color-primary)] focus:border-transparent text-sm"
+            className="w-full px-2 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-primary focus:border-transparent text-sm"
             placeholder="Max"
             min="0"
             aria-label="Maximum price input"

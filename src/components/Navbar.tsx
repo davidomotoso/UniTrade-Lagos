@@ -1,5 +1,6 @@
+"use client";
 import Image from "next/image";
-import logo from "../../public/logo.jpg";
+import logo from "../../public/LAGMIA.png";
 import { FaUser } from "react-icons/fa";
 import { FaCartShopping, FaChevronDown } from "react-icons/fa6";
 import Link from "next/link";
@@ -19,7 +20,7 @@ const Navbar = () => {
       <input
         type="search"
         name="search for products"
-        className="w-80 border rounded-sm border-gray-400 py-1 px-4"
+        className="w-80 border rounded-sm border-gray-400 py-2 px-4 text-lg"
         placeholder="Search for Products"
       />
       <nav>
@@ -35,9 +36,11 @@ const Navbar = () => {
             <li className="flex items-center gap-x-2 hover:text-secondary duration-200 relative">
               <FaCartShopping />
               Cart
-              <span className="absolute -top-2 -right-5 bg-primary text-white h-5 w-5 text-center rounded-full text-sm">
-                {cart.length}
-              </span>
+              {cart.length > 0 && (
+                <span className="absolute -top-2 -right-5 bg-primary text-white h-5 w-5 text-center rounded-full text-sm">
+                  {cart.length}
+                </span>
+              )}
             </li>
           </Link>
         </ul>

@@ -1,23 +1,49 @@
 import { create } from "zustand";
+import { StaticImageData } from "next/image";
+
+interface Product {
+  id: number;
+  name: string;
+  price: string;
+  image: StaticImageData;
+  quantity: number;
+}
+
+interface Alert {
+  message: string;
+  type: boolean;
+  color: string;
+}
 
 interface CartState {
-  cart: object[];
-  addToCart: (product: object) => void;
-  removeFromCart: (item: object) => void;
-  alert: object;
-  setAlert: (alert: { message: string; type: boolean; color: string }) => void;
-  count: number;
-  increment: () => void;
-  decrement: () => void;
+  cart: Product[];
+  addToCart: (product: Product) => void;
+  removeFromCart: (item: Product) => void;
+  alert: Alert | object;
+  setAlert: (alert: Alert | object) => void;
+  incrementQuantity: (id: number) => void;
+  decrementQuantity: (id: number) => void;
 }
 export const useCartStore = create<CartState>((set) => ({
   cart: [],
-  addToCart: (product) => set((state) => ({ cart: [...state.cart, product] })),
-  removeFromCart: (item) =>
+  addToCart: (product: Product) =>
+    set((state) => ({ cart: [...state.cart, product] })),
+  removeFromCart: (item: Product) =>
     set((state) => ({ cart: state.cart.filter((i) => i !== item) })),
   alert: {},
   setAlert: (alert) => set(() => ({ alert })),
-  count: 1,
-  increment: () => set((state) => ({ count: state.count + 1 })),
-  decrement: () => set((state) => ({ count: state.count - 1 })),
+  incrementQuantity: (id) =>
+    set((state) => ({
+      cart: state.cart.map((item) =>
+        item.id === id ? { ...item, quantity: item.quantity + 1 } : item,
+      ),
+    })),
+  decrementQuantity: (id) =>
+    set((state) => ({
+      cart: state.cart.map((item) =>
+        item.id === id && item.quantity > 0
+          ? { ...item, quantity: item.quantity - 1 }
+          : item,
+      ).filter((item) => item.quantity > 0),
+    })),
 }));
